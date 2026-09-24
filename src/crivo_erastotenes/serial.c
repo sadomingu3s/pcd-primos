@@ -1,3 +1,15 @@
+/*
+  primos_omp_static.c
+
+  Algoritmo Crivo de Erastótenes para contagem de números primos
+
+  Código da solução 2 do trabalho prático 4
+  Autor: Fernando Antônio Fernandes Júnior
+  (https://homepages.dcc.ufmg.br/~nivio/cursos/pa06/)
+
+  Adaptações feita
+*/
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,11 +21,7 @@
 unsigned long crivo(unsigned long n) {
     unsigned long max_fator = (unsigned long)sqrt((double)n);
     unsigned char *lista = (unsigned char *)malloc((n + 1) * sizeof(unsigned char));
-    if (lista == NULL) {
-        printf("Erro de alocacao de memoria.\n");
-        exit(1);
-    }
-
+    
     for (unsigned long i = 0; i <= n; i++) {
         lista[i] = FALSE;
     }
@@ -43,10 +51,6 @@ unsigned long crivo(unsigned long n) {
 }
 
 int main(int argc, char *argv[]) {
-    if (argc != 2) {
-        printf("Uso: %s <n>\n", argv[0]);
-        return 1;
-    }
     unsigned long max = (unsigned long)atol(argv[1]);
 
     struct timeval TempoInicio, TempoFim;
