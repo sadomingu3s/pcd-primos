@@ -29,7 +29,7 @@ unsigned long crivo_omp_guided(unsigned long n, int chunk_size_min) {
 
     // lista[i] vale TRUE quando i foi identificado como numero composto.
     unsigned char *lista = (unsigned char *)malloc((n + 1) * sizeof(unsigned char));
-    if (lista == NULL) exit(1); // Encerra se nao houver memoria suficiente.
+    if (lista == NULL) exit(1); 
 
     // Inicialmente, nenhum numero esta marcado como composto.
     for (unsigned long i = 0; i <= n; i++) lista[i] = FALSE;
@@ -64,7 +64,7 @@ unsigned long crivo_omp_guided(unsigned long n, int chunk_size_min) {
         if (lista[i] == FALSE) contador++;
     }
 
-    free(lista); // Libera a memoria reservada para o crivo.
+    free(lista); 
     return contador;
 }
 
@@ -75,7 +75,6 @@ int main(int argc, char *argv[]) {
     unsigned long max = (unsigned long)atol(argv[1]);
     int chunk_size_min = atoi(argv[2]);
 
-    // Inicia a medicao usando o relogio de alta precisao do OpenMP.
     double start_time = omp_get_wtime();
     unsigned long total_primos = crivo_omp_guided(max, chunk_size_min);
     double end_time = omp_get_wtime();
