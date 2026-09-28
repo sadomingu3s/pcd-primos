@@ -27,7 +27,7 @@ unsigned long crivo_omp_static(unsigned long n, int chunk_size) {
 
     // lista[i] vale TRUE quando i foi identificado como numero composto.
     unsigned char *lista = (unsigned char *)malloc((n + 1) * sizeof(unsigned char));
-    if (lista == NULL) exit(1); // Encerra se nao houver memoria suficiente.
+    if (lista == NULL) exit(1); 
 
     // Inicialmente, nenhum numero esta marcado como composto.
     for (unsigned long i = 0; i <= n; i++) lista[i] = FALSE;
@@ -66,13 +66,11 @@ unsigned long crivo_omp_static(unsigned long n, int chunk_size) {
 }
 
 int main(int argc, char *argv[]) {
-    // O programa espera: ./omp_static <N> <tamanho_do_chunk>.
     if (argc < 3) return 1;
 
     unsigned long max = (unsigned long)atol(argv[1]);
     int chunk_size = atoi(argv[2]);
 
-    // omp_get_wtime fornece um relogio adequado para medir tempo de execucao.
     double start_time = omp_get_wtime();
     unsigned long total_primos = crivo_omp_static(max, chunk_size);
     double end_time = omp_get_wtime();
