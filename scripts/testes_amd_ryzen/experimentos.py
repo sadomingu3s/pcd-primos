@@ -1,3 +1,4 @@
+#Código escrito com auxílio IA (Gemini)
 import subprocess
 import time
 import csv
