@@ -7,7 +7,7 @@ from datetime import datetime
 
 # Configurações do experimento
 N = "1000000000"  # 1e9
-RUNS = 3
+RUNS = 20
 CHUNK_SIZES = ["1000", "10000", "100000"]
 THREADS = ["1", "2", "4", "8"]
 OPTIMIZATIONS = ["O0", "O1", "O2", "O3"]
